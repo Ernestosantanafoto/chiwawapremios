@@ -331,7 +331,7 @@ export default function WinPage() {
           </div>
 
           {/* Headline */}
-          <div style={{ fontSize: 58, color: C.black, textAlign: 'center', lineHeight: 1, letterSpacing: 1, marginBottom: 20, fontFamily: "'Special Elite', serif", textShadow: `2px 2px 0 rgba(255,255,255,0.2)` }}>
+          <div style={{ fontSize: 38, color: C.black, textAlign: 'center', lineHeight: 1, letterSpacing: 1, marginBottom: 20, fontFamily: "'Special Elite', serif", textShadow: `2px 2px 0 rgba(255,255,255,0.2)` }}>
             ¿HAS GANADO?
           </div>
 
@@ -361,17 +361,27 @@ export default function WinPage() {
                 <div style={{ fontSize: 10, color: C.black, opacity: 0.4, textAlign: 'center', letterSpacing: 2, marginBottom: 18 }}>{code.length}/10</div>
                 <button onClick={handleSubmit} disabled={loading || code.length !== 10}
                   style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
-                    width: '100%', background: (loading || code.length !== 10) ? 'rgba(0,0,0,0.15)' : C.black,
-                    color: (loading || code.length !== 10) ? 'rgba(0,0,0,0.3)' : C.white,
-                    border: `2px solid ${C.black}`, padding: '14px 0',
-                    fontFamily: "'Special Elite', serif", fontSize: 16, letterSpacing: 5,
+                    display: 'block', width: '100%', position: 'relative',
+                    background: 'none', border: 'none', padding: 0,
                     cursor: (loading || code.length !== 10) ? 'default' : 'pointer',
-                    boxShadow: (loading || code.length !== 10) ? 'none' : `3px 3px 0 ${C.darkPink}`,
+                    transition: 'transform .1s',
                   }}>
-                  <img src="/heart.svg" alt="" style={{ width: 22, opacity: (loading || code.length !== 10) ? 0.2 : 0.8, filter: 'invert(1)' }} />
-                  {loading ? <span style={{ animation: 'pulse 1s infinite' }}>VERIFICANDO</span> : 'VALIDAR CÓDIGO →'}
-                  <img src="/heart.svg" alt="" style={{ width: 22, opacity: (loading || code.length !== 10) ? 0.2 : 0.8, filter: 'invert(1)' }} />
+                  <img
+                    src={code.length === 10 ? '/boton_on.png' : '/boton_off.png'}
+                    alt="validar"
+                    style={{ width: '100%', display: 'block', transition: 'opacity .2s' }}
+                  />
+                  <span style={{
+                    position: 'absolute', top: '50%', left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    fontFamily: "'Special Elite', serif",
+                    fontSize: 15, letterSpacing: 5,
+                    color: code.length === 10 ? C.white : 'rgba(255,255,255,0.35)',
+                    whiteSpace: 'nowrap', pointerEvents: 'none',
+                    textShadow: code.length === 10 ? '0 1px 3px rgba(0,0,0,0.5)' : 'none',
+                  }}>
+                    {loading ? <span style={{ animation: 'pulse 1s infinite' }}>VERIFICANDO</span> : 'VALIDAR CÓDIGO →'}
+                  </span>
                 </button>
               </div>
               {error && <div style={{ fontSize: 12, color: C.black, textAlign: 'center', marginTop: 10, opacity: 0.7 }}>{error}</div>}
