@@ -170,55 +170,104 @@ function downloadPrizeImage({ rewardCode, rewardLabel, rewardText, deadlineMsg, 
 function WinnerScreen({ rewardCode, rewardLabel, rewardText, deadlineMsg, validationId, timestamp }) {
   return (
     <div style={{ textAlign: 'center', animation: 'fadeUp .5s ease' }}>
-      <div style={{ fontSize: 10, letterSpacing: 4, color: C.black, marginBottom: 16, fontFamily: "'Special Elite', serif" }}>
+      <div style={{ fontSize: 10, letterSpacing: 4, color: C.black, opacity: 0.5, marginBottom: 12, fontFamily: "'Special Elite', serif" }}>
         ✦ premio válido · {timestamp} ✦
       </div>
-      {/* Caja negra del premio */}
-      <div style={{ border: `2px solid ${C.black}`, boxShadow: `4px 4px 0 ${C.black}`, overflow: 'hidden', marginBottom: 4 }}>
-        <div style={{ background: C.pink, padding: '8px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 11, color: C.white, fontFamily: "'Special Elite', serif", letterSpacing: 2 }}>CHIWAWA · PREMIOS</span>
-          <span style={{ fontSize: 11, color: C.white, fontFamily: 'monospace' }}>{validationId}</span>
+
+      {/* Tarjeta estilo Chiwawa — misma estética que la página */}
+      <div style={{
+        border: `2px solid ${C.black}`,
+        boxShadow: `5px 5px 0 ${C.black}`,
+        overflow: 'hidden',
+        background: 'rgba(255,248,240,0.15)',
+        marginBottom: 4,
+      }}>
+        {/* Cabecera rosa */}
+        <div style={{ background: C.black, padding: '10px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ fontSize: 10, color: C.salmon, fontFamily: "'Special Elite', serif", letterSpacing: 3 }}>✦ CHIWAWA · PREMIOS ✦</span>
+          <span style={{ fontSize: 10, color: C.salmon, fontFamily: "'Special Elite', serif", letterSpacing: 1 }}>{validationId}</span>
         </div>
-        <div style={{ background: C.black, padding: '28px 24px 20px', textAlign: 'center' }}>
+
+        <div style={{ padding: '24px 20px 20px', textAlign: 'center' }}>
+          {/* Calavera pequeña */}
+          <img src="/skull.svg" alt="" style={{ width: 36, opacity: 0.25, marginBottom: 12 }} />
+
           {rewardLabel && (
-            <div style={{ fontSize: 20, fontWeight: 900, color: C.white, marginBottom: 8, fontFamily: "'Special Elite', serif", textTransform: 'uppercase', lineHeight: 1.3 }}>
+            <div style={{ fontSize: 22, color: C.black, marginBottom: 6, fontFamily: "'Special Elite', serif", textTransform: 'uppercase', lineHeight: 1.3 }}>
               {rewardLabel}
             </div>
           )}
           {rewardText && (
-            <div style={{ fontSize: 12, color: '#888', marginBottom: 16, fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
+            <div style={{ fontSize: 12, color: C.black, opacity: 0.5, marginBottom: 16, fontStyle: 'italic', fontFamily: "'Special Elite', serif" }}>
               {rewardText}
             </div>
           )}
-          <div style={{ fontSize: 10, letterSpacing: 5, color: C.salmon, marginBottom: 8, fontFamily: "'Special Elite', serif" }}>
+
+          {/* Separador */}
+          <div style={{ borderTop: `1px solid ${C.black}22`, margin: '12px 0' }} />
+
+          <div style={{ fontSize: 10, letterSpacing: 4, color: C.black, opacity: 0.4, marginBottom: 10, fontFamily: "'Special Elite', serif" }}>
             código de canje
           </div>
-          <div style={{ fontSize: 32, letterSpacing: 8, color: C.turquoise, fontWeight: 900, padding: '14px 16px', border: `1px solid ${C.turquoise}44`, background: '#4ecdc410', marginBottom: 16, fontFamily: 'monospace' }}>
-            {rewardCode}
+
+          {/* Caja del código — estilo cartel mexicano */}
+          <div style={{
+            border: `2px solid ${C.black}`,
+            boxShadow: `3px 3px 0 ${C.black}`,
+            padding: '14px 10px',
+            marginBottom: 16,
+            background: C.black,
+          }}>
+            <div style={{ fontSize: 34, letterSpacing: 10, color: C.white, fontWeight: 900, fontFamily: "'Special Elite', serif", wordBreak: 'break-all' }}>
+              {rewardCode}
+            </div>
           </div>
+
           {deadlineMsg && (
-            <div style={{ fontSize: 11, color: C.pink, fontWeight: 700, background: '#e8547a15', border: `1px solid ${C.pink}44`, padding: '8px 14px', marginBottom: 14, fontFamily: "'Special Elite', serif" }}>
+            <div style={{
+              fontSize: 11, color: C.black, fontFamily: "'Special Elite', serif",
+              border: `1px solid ${C.black}44`, padding: '8px 14px', marginBottom: 14,
+              background: 'rgba(0,0,0,0.06)',
+            }}>
               {deadlineMsg}
             </div>
           )}
-          <div style={{ fontSize: 11, color: '#666', letterSpacing: 2, lineHeight: 1.8, marginBottom: 14, fontFamily: "'Special Elite', serif" }}>
+
+          <div style={{ fontSize: 11, color: C.black, opacity: 0.5, letterSpacing: 2, lineHeight: 1.8, marginBottom: 14, fontFamily: "'Special Elite', serif" }}>
             muestra esta pantalla<br />
-            <span style={{ color: C.salmon, fontWeight: 700 }}>en el mostrador</span>
+            <span style={{ color: C.black, opacity: 1, fontWeight: 700 }}>en el mostrador</span>
           </div>
-          <div style={{ fontSize: 10, color: '#333', letterSpacing: 1, lineHeight: 1.7, borderTop: '1px solid #2a2a2a', paddingTop: 14, fontStyle: 'italic', fontFamily: "'Crimson Text', serif" }}>
-            Presenta este cupón a nuestro personal antes de pedir. Para consumir en cualquiera de nuestros locales y no acumulable a otras ofertas o descuentos.
+
+          <div style={{ borderTop: `1px solid ${C.black}22`, paddingTop: 12 }}>
+            <div style={{ fontSize: 9, color: C.black, opacity: 0.35, letterSpacing: 1, lineHeight: 1.7, fontStyle: 'italic', fontFamily: "'Special Elite', serif" }}>
+              Presenta este cupón a nuestro personal antes de pedir. Para consumir en cualquiera de nuestros locales y no acumulable a otras ofertas o descuentos.
+            </div>
           </div>
         </div>
-        <div style={{ background: C.pink, padding: '10px 20px', display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: 11, color: C.white, fontFamily: 'monospace' }}>premio {validationId}</span>
-          <span style={{ fontSize: 10, color: C.white + '88' }}>{timestamp}</span>
+
+        {/* Pie negro */}
+        <div style={{ background: C.black, padding: '10px 20px', display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: 10, color: C.salmon, fontFamily: "'Special Elite', serif" }}>premio {validationId}</span>
+          <span style={{ fontSize: 9, color: C.salmon, opacity: 0.6 }}>{timestamp}</span>
         </div>
       </div>
+
+      {/* Botón descargar con imagen */}
       <button onClick={() => downloadPrizeImage({ rewardCode, rewardLabel, rewardText, deadlineMsg, validationId, timestamp })}
-        style={{ display: 'block', width: '100%', marginTop: 12, background: C.black, color: C.white, border: `2px solid ${C.black}`, padding: '14px 0', fontFamily: "'Special Elite', serif", fontSize: 13, letterSpacing: 4, cursor: 'pointer', textTransform: 'uppercase', boxShadow: `3px 3px 0 ${C.pink}` }}>
-        ✦ ↓ descargar imagen del premio ✦
+        style={{ display: 'block', width: '100%', position: 'relative', background: 'none', border: 'none', padding: 0, cursor: 'pointer', marginTop: 10 }}>
+        <img src="/boton_on.png" alt="descargar" style={{ width: '100%', display: 'block' }} />
+        <span style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontFamily: "'Special Elite', serif", fontSize: 13, letterSpacing: 4,
+          color: C.white, whiteSpace: 'nowrap', pointerEvents: 'none',
+          textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+        }}>
+          ✦ ↓ DESCARGAR PREMIO ✦
+        </span>
       </button>
-      <div style={{ marginTop: 10, fontSize: 10, color: C.black + '88', letterSpacing: 3, fontFamily: "'Special Elite', serif" }}>código de un solo uso</div>
+
+      <div style={{ marginTop: 10, fontSize: 9, color: C.black, opacity: 0.4, letterSpacing: 3, fontFamily: "'Special Elite', serif" }}>código de un solo uso</div>
     </div>
   )
 }
